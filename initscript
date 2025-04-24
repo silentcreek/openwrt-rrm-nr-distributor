@@ -50,5 +50,5 @@ boot() {
 }
 
 service_triggers() {
-	procd_add_reload_trigger "network" "wireless"
+	procd_add_raw_trigger "hostapd.*" 3000 /etc/init.d/rrm_nr restart
 }
