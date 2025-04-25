@@ -13,10 +13,10 @@ start_service() {
 
 	local rrm_own
 	#todo skip if nr is disabled for interface, skip disabled interface etc.
-	#while [ "$(ubus list hostapd.* | wc -l)" != "$(grep 'wifi-iface' /etc/config/wireless | wc -l)" ]; do
-	#	logger -t "${NAME}" -pdaemon.info "Waiting for all interfaces to initialize"
-	#	sleep 30
-	#done
+	while [ "$(ubus list hostapd.* | wc -l)" != "$(grep 'wifi-iface' /etc/config/wireless | wc -l)" ]; do
+		logger -t "${NAME}" -pdaemon.info "Waiting for all interfaces to initialize"
+		sleep 15
+	done
 
 	OIFS=$IFS
 	IFS=$'\x0a'
